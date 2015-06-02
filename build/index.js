@@ -12,10 +12,6 @@ var _IntlComponentWrapper = require('./IntlComponentWrapper');
 
 var _IntlComponentWrapper2 = _interopRequireDefault(_IntlComponentWrapper);
 
-var _intlProps = require('./intlProps');
-
-var _intlProps2 = _interopRequireDefault(_intlProps);
-
 var _FormattedMessage = require('./FormattedMessage');
 
 var _FormattedMessage2 = _interopRequireDefault(_FormattedMessage);
@@ -39,7 +35,6 @@ var _FormattedTime2 = _interopRequireDefault(_FormattedTime);
 exports['default'] = {
   intl: _intl2['default'],
   IntlComponentWrapper: _IntlComponentWrapper2['default'],
-  intlProps: _intlProps2['default'],
   FormattedMessage: _FormattedMessage2['default'],
   FormattedDate: _FormattedDate2['default'],
   FormattedNumber: _FormattedNumber2['default'],
