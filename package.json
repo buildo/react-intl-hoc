@@ -24,8 +24,7 @@
   "homepage": "https://github.com/buildo/react-intl-hoc",
   "dependencies": {
     "react": "^0.13.3",
-    "react-intl": "^1.2.0",
-    "tcomb": "^2.0.0-beta"
+    "react-intl": "^1.2.0"
   },
   "devDependencies": {
     "babel": "^5.4.7"
