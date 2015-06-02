@@ -1,0 +1,29 @@
+{
+  "name": "react-intl-hoc",
+  "version": "0.0.1",
+  "description": "wrappers for react-intl components",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:buildo/react-intl-hoc"
+  },
+  "keywords": [
+    "react",
+    "intl",
+    "component"
+  ],
+  "author": "Giovanni Gonzaga <giovanni@buildo.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/buildo/react-intl-hoc/issues"
+  },
+  "homepage": "https://github.com/buildo/react-intl-hoc",
+  "dependencies": {
+    "react": "^0.13.3",
+    "react-intl": "^1.2.0",
+    "tcomb": "^2.0.0-beta"
+  }
+}
