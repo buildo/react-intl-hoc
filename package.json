@@ -2,10 +2,10 @@
   "name": "react-intl-hoc",
   "version": "0.0.1",
   "description": "wrappers for react-intl components",
-  "main": "build",
+  "main": "lib",
   "scripts": {
     "test": "mocha",
-    "build": "babel --loose --stage 0 --out-dir build src"
+    "build": "babel --loose --stage 0 --out-dir lib src"
   },
   "repository": {
     "type": "git",
