@@ -1,9 +1,9 @@
 import React from 'react';
-import { intl } from './intl';
+import intl from './intl';
 import { getIntlMessage } from 'react-intl';
 
 @intl
-export class IntlComponentWrapper extends React.Component {
+export default class IntlComponentWrapper extends React.Component {
 
   render() {
     const {

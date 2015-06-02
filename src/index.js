@@ -1,8 +1,19 @@
-export * from './intl';
-export * from './IntlComponentWrapper';
-export * from './intlProps';
-export * from './FormattedMessage';
-export * from './FormattedDate';
-export * from './FormattedNumber';
-export * from './FormattedRelative';
-export * from './FormattedTime';
+import intl from './intl';
+import IntlComponentWrapper from './IntlComponentWrapper';
+import intlProps from './intlProps';
+import FormattedMessage from './FormattedMessage';
+import FormattedDate from './FormattedDate';
+import FormattedNumber from './FormattedNumber';
+import FormattedRelative from './FormattedRelative';
+import FormattedTime from './FormattedTime';
+
+export default {
+  intl,
+  IntlComponentWrapper,
+  intlProps,
+  FormattedMessage,
+  FormattedDate,
+  FormattedNumber,
+  FormattedRelative,
+  FormattedTime
+};

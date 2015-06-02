@@ -5,7 +5,7 @@ import {
   getChildContext
 } from 'react-intl';
 
-export function intl(Component) {
+export default function intl(Component) {
 
   class IntlWrapper extends React.Component {
 
