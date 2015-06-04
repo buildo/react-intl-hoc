@@ -42,15 +42,20 @@ module.exports = function (config) {
             test: /\.jsx?$/,
             loader: 'babel?stage=0&loose',
             include: ['src', 'test'],
-            exclude: [/node_modules/]
+            exclude: /node_modules/
           }
         ],
         preLoaders: [
           {
             test: /\.jsx?$/,
+            loader: 'eslint',
+            include: 'src',
+            exclude: /node_modules/
+          }, {
+            test: /\.jsx?$/,
             loader: 'isparta?{babel: {stage: 0, loose: true}}',
             include: 'src',
-            exclude: [/node_modules/]
+            exclude: /node_modules/
           }
         ]
       },
