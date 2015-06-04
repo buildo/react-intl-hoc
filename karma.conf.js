@@ -1,6 +1,12 @@
 'use strict';
 
+var path = require('path');
 var webpack = require('webpack');
+
+var paths = {
+  SRC: path.resolve(__dirname, 'src'),
+  TEST: path.resolve(__dirname, 'test')
+}
 
 module.exports = function (config) {
   config.set({
@@ -41,7 +47,7 @@ module.exports = function (config) {
           {
             test: /\.jsx?$/,
             loader: 'babel?stage=0&loose',
-            include: ['src', 'test'],
+            include: [paths.SRC, paths.TEST],
             exclude: /node_modules/
           }
         ],
@@ -49,12 +55,12 @@ module.exports = function (config) {
           {
             test: /\.jsx?$/,
             loader: 'eslint',
-            include: 'src',
+            include: paths.SRC,
             exclude: /node_modules/
           }, {
             test: /\.jsx?$/,
             loader: 'isparta?{babel: {stage: 0, loose: true}}',
-            include: 'src',
+            include: paths.SRC,
             exclude: /node_modules/
           }
         ]
