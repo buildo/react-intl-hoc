@@ -5,6 +5,7 @@
   "main": "build",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start",
+    "lint": "eslint src",
     "build": "babel --loose --stage 0 --out-dir build src"
   },
   "repository": {
