@@ -6,7 +6,7 @@ var webpack = require('webpack');
 var paths = {
   SRC: path.resolve(__dirname, 'src'),
   TEST: path.resolve(__dirname, 'test')
-}
+};
 
 module.exports = function (config) {
   config.set({
