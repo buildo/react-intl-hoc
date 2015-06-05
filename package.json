@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/buildo/react-intl-hoc",
   "dependencies": {
+    "lodash": "^3.9.3",
     "react-intl": "^1.2.0"
   },
   "devDependencies": {
