@@ -54,12 +54,12 @@ module.exports = function (config) {
         preLoaders: [
           {
             test: /\.jsx?$/,
-            loader: 'eslint',
+            loader: 'isparta?{babel: {stage: 0, loose: true}}',
             include: paths.SRC,
             exclude: /node_modules/
           }, {
             test: /\.jsx?$/,
-            loader: 'isparta?{babel: {stage: 0, loose: true}}',
+            loader: 'eslint',
             include: paths.SRC,
             exclude: /node_modules/
           }

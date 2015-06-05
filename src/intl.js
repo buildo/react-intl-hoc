@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import {
   contextTypes,
   childContextTypes,
@@ -17,8 +18,12 @@ export default function intl(Component) {
       return getChildContext.call(this);
     }
 
+    getProps() {
+      return _.extend({}, this.context, this.props);
+    }
+
     render() {
-      return <Component {...this.props} {...this.context} />;
+      return <Component {...this.getProps()} />;
     }
 
   }
