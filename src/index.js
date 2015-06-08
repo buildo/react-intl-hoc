@@ -1,6 +1,7 @@
-if (!window.Intl) {
+if (typeof window !== 'undefined' && typeof Intl === 'undefined') {
   console.log('react-intl-hoc: Including intl polyfill.. you may want to include this by yourself only when needed');
   const IntlPolyfill = require('intl');
+  window.Intl = IntlPolyfill;
   Intl.NumberFormat = IntlPolyfill.NumberFormat;
   Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat;
 }
