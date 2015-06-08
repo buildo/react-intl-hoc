@@ -1,5 +1,8 @@
 if (!window.Intl) {
-  require('intl');
+  console.log('react-intl-hoc: Including intl polyfill.. you may want to include this by yourself only when needed');
+  const IntlPolyfill = require('intl');
+  Intl.NumberFormat = IntlPolyfill.NumberFormat;
+  Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat;
 }
 
 import intl from './intl';
