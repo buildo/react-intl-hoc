@@ -1,6 +1,6 @@
 {
   "name": "react-intl-hoc",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "wrappers for react-intl components",
   "main": "lib",
   "scripts": {
