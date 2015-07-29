@@ -21,7 +21,7 @@
     "component"
   ],
   "author": "Giovanni Gonzaga <giovanni@buildo.io>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/buildo/react-intl-hoc/issues"
   },
