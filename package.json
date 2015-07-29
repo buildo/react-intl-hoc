@@ -6,7 +6,10 @@
   "scripts": {
     "test": "./node_modules/karma/bin/karma start",
     "build": "babel --loose --stage 0 --out-dir lib src",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "preversion": "npm run lint && npm run test",
+    "postversion": "git push && git push --tags",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -18,7 +21,7 @@
     "component"
   ],
   "author": "Giovanni Gonzaga <giovanni@buildo.io>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/buildo/react-intl-hoc/issues"
   },
