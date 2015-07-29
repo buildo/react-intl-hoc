@@ -1,5 +1,7 @@
 node_modules
 coverage
-mocha.json
 npm-debug.log
-lib
+.git
+test
+karma*
+.eslintrc
