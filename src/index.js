@@ -1,17 +1,8 @@
-import intl from './intl';
-import IntlComponentWrapper from './IntlComponentWrapper';
-import FormattedMessage from './FormattedMessage';
-import FormattedDate from './FormattedDate';
-import FormattedNumber from './FormattedNumber';
-import FormattedRelative from './FormattedRelative';
-import FormattedTime from './FormattedTime';
-
-export default {
-  intl,
-  IntlComponentWrapper,
-  FormattedMessage,
-  FormattedDate,
-  FormattedNumber,
-  FormattedRelative,
-  FormattedTime
-};
+export intl from './intl';
+export intlMethods from './intlMethods';
+export IntlComponentWrapper from './IntlComponentWrapper';
+export FormattedMessage from './FormattedMessage';
+export FormattedDate from './FormattedDate';
+export FormattedNumber from './FormattedNumber';
+export FormattedRelative from './FormattedRelative';
+export FormattedTime from './FormattedTime';
