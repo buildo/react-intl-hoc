@@ -1,6 +1,6 @@
 {
   "name": "react-intl-hoc",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "dependencies": {
     "babel": {
       "version": "5.4.7",
