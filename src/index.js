@@ -6,3 +6,5 @@ export FormattedDate from './FormattedDate';
 export FormattedNumber from './FormattedNumber';
 export FormattedRelative from './FormattedRelative';
 export FormattedTime from './FormattedTime';
+export keyMapFM from './keyMapFM';
+export translateProps from './translateProps';
