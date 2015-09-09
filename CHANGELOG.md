@@ -1,3 +1,9 @@
+# v0.1.1
+
+## Features
+
+- `keyMap` function in `@intlMethods` and other helpers/decorators is executed with Component instance context
+
 # v0.1.0
 
 ## Features
