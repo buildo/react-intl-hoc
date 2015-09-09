@@ -9,7 +9,7 @@ class Component extends React.Component {
   }
 }
 
-const IntlMethodsComponent = intlMethods(Component);
+const IntlMethodsComponent = intlMethods()(Component);
 
 describe('intlMethods decorator', () => {
 
