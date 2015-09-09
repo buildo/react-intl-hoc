@@ -1,5 +1,4 @@
 import ri, { contextTypes } from 'react-intl';
-import identity from 'lodash/utility/identity';
 
 export const methods = [
   'formatDate',
@@ -10,6 +9,8 @@ export const methods = [
   // "private methods":
   '_format', 'getDateTimeFormat', 'getMessageFormat', 'getNamedFormat', 'getNumberFormat', 'getRelativeFormat'
 ];
+
+const identity = v => v;
 
 // optional keyMap fn
 // When provided, it should map translation keys for Messages to custom translation keys
