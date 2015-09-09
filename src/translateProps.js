@@ -1,6 +1,7 @@
 import React from 'react';
-import identity from 'lodash/utility/identity';
 import intlMethods from './intlMethods';
+
+const identity = v => v;
 
 // a decorator to translate t.ReactNode "translatable" props
 // translatable meaning: is a string and has the form of a translation key

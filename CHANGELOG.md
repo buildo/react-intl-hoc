@@ -1,3 +1,7 @@
+# v0.1.2
+
+drop lodash dep
+
 # v0.1.1
 
 ## Features
