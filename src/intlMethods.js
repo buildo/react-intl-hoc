@@ -11,7 +11,10 @@ export const methods = [
   '_format', 'getDateTimeFormat', 'getMessageFormat', 'getNamedFormat', 'getNumberFormat', 'getRelativeFormat'
 ];
 
-// optional keyMap fn. When provided, it should map translation keys for Messages to custom translation keys
+// optional keyMap fn
+// When provided, it should map translation keys for Messages to custom translation keys
+// it is executed with Component instance as context
+// (you can access `this.props`, `this.context` or whatever)
 export default function intlMethods(keyMap = identity) {
   return function(Component) {
 
@@ -39,7 +42,7 @@ export default function intlMethods(keyMap = identity) {
     }
 
     Component.prototype.formatMessage = function(key, ...args) {
-      return ri.formatMessage.apply(this, [ri.getIntlMessage.call(this, keyMap(key)), ...args]);
+      return ri.formatMessage.apply(this, [ri.getIntlMessage.call(this, keyMap.call(this, key)), ...args]);
     };
 
     return Component;

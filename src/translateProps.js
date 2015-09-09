@@ -4,24 +4,19 @@ import intlMethods from './intlMethods';
 
 // a decorator to translate t.ReactNode "translatable" props
 // translatable meaning: is a string and has the form of a translation key
-export default function translateProps(Component) {
+// optional `keyMap` fn: see `@intlMethods`
+export default function translateProps(keyMap = identity) {
 
   const match = /([A-Z][a-zA-Z]+\.)+[a-zA-Z]+/;
   const hasTranslatableForm = v => typeof v === 'string' && match.exec(v) !== null;
 
-  // optional keyMap fn, see @intlMethods
-  return function(keyMap = identity) {
+  return function(Component) {
 
     @intlMethods(keyMap)
     class Wrapper extends React.Component {
 
-      // hasMorpheusForm(v) {
-      //   const msgs = this.context.messages;
-      //   return hasTranslatableForm(v) && msgs && msgs.morpheus && msgs.morpheus[v.split('.')[0]];
-      // }
-
       maybeTranslateProp(k) {
-        const v = keyMap(this.props[k]);
+        const v = keyMap.call(this, this.props[k]);
 
         return hasTranslatableForm(v) ? this.formatMessage(v) : v;
       }
