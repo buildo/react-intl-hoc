@@ -21,7 +21,7 @@ export default function intlMethods(
   // it is executed with Component instance as context
   // (you can access `this.props`, `this.context` or whatever)
   // key in input is already `keyMap`ped
-  messageExists = () => false
+  keyExists = () => false
 ) {
   return function(Component) {
 
@@ -57,7 +57,7 @@ export default function intlMethods(
     };
 
     // optional `formatMessageIfItExists`,
-    // formats only if `messageExists(keyMap(k)) is true`
+    // formats only if `keyExists(keyMap(k)) is true`
 
     if (process.env.NODE_ENV !== 'production') {
       if (Component.prototype.formatMessageIfItExists) {
@@ -66,7 +66,7 @@ export default function intlMethods(
     }
 
     Component.prototype.formatMessageIfItExists = function(key, ...args) {
-      return messageExists.call(this, keyMap.call(this, key)) ? this.formatMessage.apply(this, [key, ...args]) : key;
+      return keyExists.call(this, keyMap.call(this, key)) ? this.formatMessage.apply(this, [key, ...args]) : key;
     };
 
     return Component;
