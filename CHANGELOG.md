@@ -1,3 +1,9 @@
+# v0.1.4
+
+## Fixes
+
+consider `keyExists` also in `@translateProps`
+
 # v0.1.3
 
 ## Features

@@ -5,27 +5,18 @@ const identity = v => v;
 
 // a decorator to translate t.ReactNode "translatable" props
 // translatable meaning: is a string and has the form of a translation key
-// optional `keyMap` fn: see `@intlMethods`
-export default function translateProps(keyMap = identity) {
-
-  const match = /([A-Z][a-zA-Z]+\.)+[a-zA-Z]+/;
-  const hasTranslatableForm = v => typeof v === 'string' && match.exec(v) !== null;
+// optional `keyMap` and `keyExists` fns: see `@intlMethods`
+export default function translateProps(keyMap, keyExists) {
 
   return function(Component) {
 
-    @intlMethods(keyMap)
+    @intlMethods(keyMap, keyExists)
     class Wrapper extends React.Component {
-
-      maybeTranslateProp(k) {
-        const v = keyMap.call(this, this.props[k]);
-
-        return hasTranslatableForm(v) ? this.formatMessage(v) : v;
-      }
 
       translatedProps() {
         return Object.keys(this.props).reduce((ac, k) => ({
           ...ac,
-          [k]: this.maybeTranslateProp(k)
+          [k]: this.formatMessageIfItExists(k)
         }), {});
       }
 
