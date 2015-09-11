@@ -10,19 +10,27 @@ export const methods = [
   '_format', 'getDateTimeFormat', 'getMessageFormat', 'getNamedFormat', 'getNumberFormat', 'getRelativeFormat'
 ];
 
-const identity = v => v;
-
-// optional keyMap fn
-// When provided, it should map translation keys for Messages to custom translation keys
-// it is executed with Component instance as context
-// (you can access `this.props`, `this.context` or whatever)
-export default function intlMethods(keyMap = identity) {
+export default function intlMethods(
+  // optional keyMap fn
+  // When provided, it should map translation keys for Messages to custom translation keys
+  // it is executed with Component instance as context
+  // (you can access `this.props`, `this.context` or whatever)
+  keyMap = v => v,
+  // used by `formatMessageIfItExists`
+  // should return true if message key exists
+  // it is executed with Component instance as context
+  // (you can access `this.props`, `this.context` or whatever)
+  // key in input is already `keyMap`ped
+  messageExists = () => false
+) {
   return function(Component) {
 
     Component.contextTypes = {
       ...(Component.contextTypes || {}),
       ...contextTypes
     };
+
+    // all normal intl methods
 
     methods.forEach(method => {
       if (process.env.NODE_ENV !== 'production') {
@@ -36,6 +44,8 @@ export default function intlMethods(keyMap = identity) {
       };
     });
 
+    // normal `formatMessage`, key transformed by `keyMap`
+
     if (process.env.NODE_ENV !== 'production') {
       if (Component.prototype.formatMessage) {
         console.warn(`Overriding instance method 'formatMessage' for Component '${Component.name}'`);
@@ -44,6 +54,19 @@ export default function intlMethods(keyMap = identity) {
 
     Component.prototype.formatMessage = function(key, ...args) {
       return ri.formatMessage.apply(this, [ri.getIntlMessage.call(this, keyMap.call(this, key)), ...args]);
+    };
+
+    // optional `formatMessageIfItExists`,
+    // formats only if `messageExists(keyMap(k)) is true`
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (Component.prototype.formatMessageIfItExists) {
+        console.warn(`Overriding instance method 'formatMessageIfItExists' for Component '${Component.name}'`);
+      }
+    }
+
+    Component.prototype.formatMessageIfItExists = function(key, ...args) {
+      return messageExists.call(this, keyMap.call(this, key)) ? this.formatMessage.apply(this, [key, ...args]) : key;
     };
 
     return Component;
