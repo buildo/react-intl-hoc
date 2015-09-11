@@ -16,7 +16,7 @@ export default function translateProps(keyMap, keyExists) {
       translatedProps() {
         return Object.keys(this.props).reduce((ac, k) => ({
           ...ac,
-          [k]: this.formatMessageIfItExists(k)
+          [k]: typeof this.props[k] === 'string' ? this.formatMessageIfItExists(this.props[k]) : this.props[k]
         }), {});
       }
 
