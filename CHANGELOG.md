@@ -1,3 +1,9 @@
+# v0.1.3
+
+## Features
+
+- `messageExists` param and `formatMessageIfItExists` method in `@intlMethods`
+
 # v0.1.2
 
 drop lodash dep
