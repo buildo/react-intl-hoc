@@ -1,8 +1,15 @@
 import expect from 'expect';
 import * as exportz from '../../src';
 
+const shouldExportValue = [
+  'contextTypes', 'childContextTypes'
+];
+const expectExportValue = k => () => {
+  expect(exportz[k]).to;
+};
+
 const shouldExportFunction = [
-  'intl', 'intlMethods', 'translateProps', 'keyMapFM'
+  'intl', 'intlMethods', 'translateProps', 'keyMapFM', 'getChildContext'
 ];
 const expectExportFunction = k => () => {
   expect(exportz[k]).toBeA(Function);
@@ -16,6 +23,10 @@ const expectExportComponent = k => () => {
 };
 
 describe('index.js', () => {
+
+  shouldExportValue.forEach(ex => it(`should export ${ex}`,
+    expectExportValue(ex)
+  ));
 
   shouldExportFunction.forEach(ex => it(`should export ${ex}`,
     expectExportFunction(ex)

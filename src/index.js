@@ -8,3 +8,8 @@ export FormattedRelative from './FormattedRelative';
 export FormattedTime from './FormattedTime';
 export keyMapFM from './keyMapFM';
 export translateProps from './translateProps';
+export {
+  contextTypes,
+  childContextTypes,
+  getChildContext
+} from 'react-intl';
