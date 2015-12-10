@@ -25,6 +25,14 @@ export default function intlMethods(
 ) {
   return function(Component) {
 
+    const maybeWarnForOverride = method => {
+      if (process.env.NODE_ENV !== 'production') {
+        if (Component.prototype[method] && !Component.prototype[method].__mine) {
+          console.warn(`Overriding instance method '${method}' for Component '${Component.name}'`);
+        }
+      }
+    };
+
     Component.contextTypes = {
       ...(Component.contextTypes || {}),
       ...contextTypes
@@ -33,41 +41,38 @@ export default function intlMethods(
     // all normal intl methods
 
     methods.forEach(method => {
-      if (process.env.NODE_ENV !== 'production') {
-        if (Component.prototype[method]) {
-          console.warn(`Overriding instance method '${method}' for Component '${Component.name}'`);
-        }
-      }
+      if (!Component.prototype[method] || !Component.prototype[method].__mine) {
+        maybeWarnForOverride(method);
 
-      Component.prototype[method] = function(...args) {
-        return ri[method].call(this, ...args);
-      };
+        Component.prototype[method] = function(...args) {
+          return ri[method].call(this, ...args);
+        };
+        Component.prototype[method].__mine = true;
+      }
     });
 
     // normal `formatMessage`, key transformed by `keyMap`
 
-    if (process.env.NODE_ENV !== 'production') {
-      if (Component.prototype.formatMessage) {
-        console.warn(`Overriding instance method 'formatMessage' for Component '${Component.name}'`);
-      }
-    }
+    if (!Component.prototype.formatMessage || !Component.prototype.formatMessage.__mine) {
+      maybeWarnForOverride('formatMessage');
 
-    Component.prototype.formatMessage = function(key, ...args) {
-      return ri.formatMessage.apply(this, [ri.getIntlMessage.call(this, keyMap.call(this, key)), ...args]);
-    };
+      Component.prototype.formatMessage = function(key, ...args) {
+        return ri.formatMessage.apply(this, [ri.getIntlMessage.call(this, keyMap.call(this, key)), ...args]);
+      };
+      Component.prototype.formatMessage.__mine = true;
+    }
 
     // optional `formatMessageIfItExists`,
     // formats only if `keyExists(keyMap(k)) is true`
 
-    if (process.env.NODE_ENV !== 'production') {
-      if (Component.prototype.formatMessageIfItExists) {
-        console.warn(`Overriding instance method 'formatMessageIfItExists' for Component '${Component.name}'`);
-      }
-    }
+    if (!Component.prototype.formatMessageIfItExists || !Component.prototype.formatMessageIfItExists.__mine) {
+      maybeWarnForOverride('formatMessageIfItExists');
 
-    Component.prototype.formatMessageIfItExists = function(key, ...args) {
-      return keyExists.call(this, keyMap.call(this, key)) ? this.formatMessage.apply(this, [key, ...args]) : key;
-    };
+      Component.prototype.formatMessageIfItExists = function(key, ...args) {
+        return keyExists.call(this, keyMap.call(this, key)) ? this.formatMessage.apply(this, [key, ...args]) : key;
+      };
+      Component.prototype.formatMessageIfItExists.__mine = true;
+    }
 
     return Component;
 
