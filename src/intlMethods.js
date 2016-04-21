@@ -28,7 +28,7 @@ export default function intlMethods(
     const maybeWarnForOverride = method => {
       if (process.env.NODE_ENV !== 'production') {
         if (Component.prototype[method] && !Component.prototype[method].__mine) {
-          console.warn(`Overriding instance method '${method}' for Component '${Component.name}'`);
+          console.warn(`Overriding instance method '${method}' for Component '${Component.name}'`); // eslint-disable-line no-console
         }
       }
     };

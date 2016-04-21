@@ -18,12 +18,7 @@ export default function keyMapFM(keyMap) {
     render() {
       const { message: m, ...moreProps } = this.props;
 
-      return (
-        <FormattedMessage {...{
-          message: keyMap.call(this, m),
-          ...moreProps
-        }} />
-      );
+      return <FormattedMessage {...{ message: keyMap.call(this, m), ...moreProps }} />;
     }
 
   }
