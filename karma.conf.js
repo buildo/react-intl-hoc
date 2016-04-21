@@ -8,7 +8,7 @@ var paths = {
   TEST: path.resolve(__dirname, 'test')
 };
 
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
 
     browserNoActivityTimeout: 30000,
@@ -27,19 +27,7 @@ module.exports = function (config) {
       'karma.js': [ 'webpack' ],
     },
 
-    reporters: process.env.CONTINUOUS_INTEGRATION ? [ 'bamboo', 'coverage' ] : [ 'dots', 'coverage' ],
-
-    bambooReporter: {
-      filename: 'mocha.json',
-    },
-
-    coverageReporter: {
-      reporters: [
-        process.env.CONTINUOUS_INTEGRATION ?
-        { type: 'lcov', subdir: 'lcov-report' } :
-        { type: 'html', subdir: 'html-report' }
-      ],
-    },
+    reporters: [ 'dots' ],
 
     webpack: {
       module: {

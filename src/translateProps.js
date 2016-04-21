@@ -1,8 +1,6 @@
 import React from 'react';
 import intlMethods from './intlMethods';
 
-const identity = v => v;
-
 // a decorator to translate t.ReactNode "translatable" props
 // translatable meaning: is a string and has the form of a translation key
 // optional `keyMap` and `keyExists` fns: see `@intlMethods`
